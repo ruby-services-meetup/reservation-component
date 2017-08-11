@@ -1,1 +1,0 @@
-lib/message_store/home/ntl/projects/eventide-project/message-store-event-store/lib/message_store/eve
