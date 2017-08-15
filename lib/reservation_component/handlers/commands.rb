@@ -19,6 +19,12 @@ module ReservationComponent
 
       category :reservation
 
+      handle Schedule do |schedule|
+        # ...
+
+        write.(scheduled, stream_name, expected_version: version)
+      end
+
       handle Reserve do |reserve|
         event_id = reserve.event_id
 
@@ -26,8 +32,10 @@ module ReservationComponent
 
         stream_name = stream_name(event_id)
 
+        quantity = reserve.quantity
+
         unless event.available?(quantity)
-          sold_out = SoldOut.follow(reserve)
+          sold_out = SoldOut.follows(reserve)
           sold_out.processed_time = clock.iso8601
 
           write.(sold_out, stream_name, expected_version: version)

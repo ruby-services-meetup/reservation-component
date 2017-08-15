@@ -1,4 +1,4 @@
-module AccountComponent
+module ReservationComponent
   module Messages
     module Events
       class Reserved

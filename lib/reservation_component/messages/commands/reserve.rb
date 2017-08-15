@@ -1,4 +1,4 @@
-module AccountComponent
+module ReservationComponent
   module Messages
     module Commands
       class Reserve
@@ -7,6 +7,7 @@ module AccountComponent
         attribute :reservation_id, String
         attribute :event_id, String
         attribute :customer_id, String
+        attribute :quantity, Integer
         attribute :time, String
       end
     end
